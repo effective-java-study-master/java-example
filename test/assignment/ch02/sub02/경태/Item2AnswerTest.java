@@ -1,12 +1,12 @@
-package assignment.ch02.sub01.경태;
+package assignment.ch02.sub02.경태;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
-import static assignment.ch02.sub01.경태.BeefBurger.Size.LARGE;
-import static assignment.ch02.sub01.경태.Hamburger.Topping.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static assignment.ch02.sub02.경태.BeefBurger.Size.LARGE;
+import static assignment.ch02.sub02.경태.Hamburger.Topping.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Item2AnswerTest {
 
