@@ -1,4 +1,4 @@
-package assignment.ch02.sub01.경태;
+package assignment.ch02.sub02.경태;
 
 public class ChickenBurger extends Hamburger {
 
