@@ -1,0 +1,5 @@
+문제 : 다음 예시에서 static factory method 의 장점이 아닌 케이스는 ?
+
+정답: 6번) 무분별한 인스턴스화를 막기 위해 private 를 사용한다.
+
+이유: `public` 혹은 `protected` 생성자가 없이 정적 펙터리 메서드만 제공하는 클래스는 하위 클래스를 생성할 수 없기 때문에 6번의 예시와 같이 private 생성자만 사용할 경우 public static method의 장점으로 볼 수 없다.
