@@ -1,4 +1,4 @@
-다음 예시에서 static factory method 의 장점이 아닌 케이스는 ? (1~6 중 1지선다)
+다음 예시에서 static factory method 의 장점이 아닌 케이스는 ? (1~6 중 6지선다)
 
 1) 생성자 처럼 인스턴스를 생성해주는 메소드에 이름을 지어 사용할 수 있다.
 class CustomClass {
@@ -19,6 +19,10 @@ BigInteger bigInteger = BigInteger.valueOf(Integer.MAX_VALUE);
 
 
 2) 호출될 때마다 인스턴스를 새로 생성할 필요가 없다.
+// parameter 조건 있음!
+// i = -128 ~ 127 까지입니다.
+// (return IntegerCache.cache[i + (-IntegerCache.low)];)  << 여기가 point!!
+
 public static Integer valueOf(int i) {
     if (i >= IntegerCache.low && i <= IntegerCache.high)
         return IntegerCache.cache[i + (-IntegerCache.low)];
