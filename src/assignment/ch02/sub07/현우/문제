@@ -1,0 +1,16 @@
+Q1. 아래는 HashMap으로 작성된 코드 이다. WeakHashMap 으로 변경 후 key2, key3을 제거 후 출력하라.
+public class WeakHashMapTest {
+    public static void main(String[] args) {
+        final HashMap<Integer, String> hashMap = new HashMap<>();
+
+        Integer key1 = 1000;
+        Integer key2 = 2000;
+        Integer key3 = 3000;
+
+        hashMap.put(key1, "test1");
+        hashMap.put(key2, "test2");
+        hashMap.put(key3, "test3");
+    }
+}
+
+Q2. Q1을 통해서 얻을 수 있는 장점을 설명하라.
