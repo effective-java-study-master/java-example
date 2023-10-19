@@ -1,7 +1,7 @@
 틀린 것은?
 1) 값타입(Integer)인 경우 == 연산은 참조값을 비교하고 기본타입(int)인 경우 값을 비교한다. O
 2) Object의 equals가 대다수 경우에 대해 개발자가 원하는 비교를 정확히 수행해준다. equals() 재정의는 꼭 필요한 경우가 아니면 하지 않는 것이 좋다. O
-3) equals 를 orverride 할 때, instanceof 을 사용하는 편이 비효율 적이다. X -> getClass() 메서드나 클래스의 타입 정보를 활용하는 것이 더 안전하고 효율적임
+3) equals 를 orverride 할 때, instanceof 을 사용하는 편이 비효율 적이다. X
 4) equals를 재정의할 땐 hashCode도 재정의 하는게 맞다. O
 5) 항상 x.equals(x) = true 여야 한다. O
 6) x, y 에서 x.equals(y) = true 면, y.equals(x) 도 true 여야 한다. O
@@ -10,3 +10,6 @@
 9) equals 에서 null 은 대상이 아니다. 즉, null.equals(...) 가 있을 수 없다. O
 
 => 3번이 틀렸음
+
+instanceOf를 사용하면 객체의 타입을 검사하기 위해 추가적인 형 변환 작업이 필요하며, 런타임 오류의 가능성이 있음
+따라서 getClass() 메서드나 클래스의 타입 정보를 활용하는 것이 더 안전하고 효율적임
