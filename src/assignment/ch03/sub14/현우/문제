@@ -1,0 +1,13 @@
+Q1. 아래는 compareTo 메서드 일반 규약이다 이중 틀린 것은 무엇인가?
+    a. 두 객체참조의 순서를 바꿔 비교해도 예상한 결과가 나와야한다.
+    b. 첫 번째가 두번째보다 크고 두 번째가 세번째보다 크면 첫번째는 세번째보다 커야한다.
+    c. 크기가 같은 객체들끼리는 어떤 객체와 비교하더라도 항상 같다.
+    d. compareTo 메서드로 수행한 동치성테스트 결과가 equals와 항상 같아야한다.
+
+Q2. 아래 주어진 메서드 방식은 추이성을 위반한 케이스이다. 다른 방식으로 구현하고, 아래 방식은 어떠한 문제가 있는지 답하여라.
+    static Comparator<Object> hashCodeOrder = new Comparator<Object>() {
+            @Override
+            public int compare(final Object o1, final Object o2) {
+                return o1.hashCode() - o2.hashCode();
+            }
+    };
