@@ -25,10 +25,6 @@ public static void main(String[] args) throws IOException {
             System.out.println(scanner.nextLine());
 
         } catch (FileNotFoundException e) {
-            // scanner 리소스 반납
-            if (scanner != null) {
-                scanner.close();
-            }
         }
     }
 }
