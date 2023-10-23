@@ -1,0 +1,42 @@
+(늦어서 죄송합니다 (ㅠㅠ)(__)(ㅜㅜ)
+
+clone()을 사용해야 한다면 반드시 clone()을 override 해줘야 한다.
+
+책에서 예제로 많이 사용되는 page 80의 Stack 클래스이다. clone()을 재정의하지 않고 있다.
+
+
+
+import java.util.Arrays;
+import java.util.EmptyStackException;
+
+
+public class Stack implements Cloneable {
+    private Object[] elements;
+    private int size = 0;
+...
+...
+
+}
+
+
+page 80 코드 상태에서 Stack을 clone()하면 참조객체 맴버 변수인 elements(14 line) 는 기존의 인스턴스 Stack과
+복제한 Stack에서 같은 맴버 변수를 바라보게 되어 기존 인스턴스 동작과 복제한 인스턴스의 동작이 꼬일 것이다.
+이를 방지하기위해서는 첫 줄에서 언급한 것 처럼 clone()을 재정의 해야 할 것이다.
+return (Stack) super.clone();
+30 line 처럼, 이 선언만 가지고는 참조변수 객체의 다중 참조문제는 해결되지 않는다.
+
+	@Override
+    protected Stack clone() {
+//        return (Stack) super.clone();
+        Stack result = null;
+        try {
+            result = (Stack) super.clone();
+            // 여기에 무슨 선언을 해주면 될까요?
+            return result;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+34 line에서 elements 관련, 무슨 선언을 해주면 위에서 말한 문제점인
+'참조객체 맴버 변수인 elements(14 line) 는 기존의 인스턴스 Stack과 복제한 Stack에서 같은 맴버 변수를 바라보게 된다'
+는 문제점이 해결될까?
