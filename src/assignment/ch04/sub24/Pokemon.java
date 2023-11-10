@@ -32,11 +32,14 @@ public class Pokemon {
 
     public static void main(String[] args) {
 
-        // 1) 바깥 클래스 인스턴스 생성
+       // 1) 바깥 클래스 인스턴스 생성
+        Pokemon myPokemon = new Pokemon("Pikachu");
 
         // 2) Pikachu 인스턴스 생성
+        Pikachu myPikachu = myPokemon.new Pikachu();
 
         // 3) Pikachu로 바깥 클래스 Pokemon의 메서드 호출
+        myPikachu.shock();
 
     }
 }
