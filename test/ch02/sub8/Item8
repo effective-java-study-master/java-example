@@ -1,0 +1,6 @@
+Q. 일반적으로 finalizer 와 cleaner 사용을 피하는 것이 좋다.
+   속도도 느리고, 언제 실행될 지 예측이 불가능하기 때문이다.
+   그럼에도 finalizer 와 cleaner 를 사용해야 하는 경우는 언제인가?
+
+A. 1 ) 자원의 소유자가 close 메서드를 호출하지 않는 것에 대한 대비망 (예시. FileInputStream, FileOutputStream, ThreadPoolExecutor)
+   2 ) 네이티브 피어와 연결된 객체에서의 사용. 자바 피어를 회수할 때 네이티브 피어도 회수하지 못해서 cleaner나 finalizer가 나서서 처리할 수 있음

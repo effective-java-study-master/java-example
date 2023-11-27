@@ -1,0 +1,17 @@
+아래의 FileA와 FileB 두 개의 소스 파일이 있습니다.
+위 두 피일을 컴파일하려고 시도했을 때, 어떤 문제가 발생할 것이며, 그 원인은 무엇인가요?
+
+
+
+public class FileA {
+    public static void main(String[] args) {
+        System.out.println("It's FileA");
+    }
+}
+
+
+public class FileB {
+    public static void main(String[] args) {
+        System.out.println("It's FileB");
+    }
+}
