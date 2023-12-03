@@ -1,0 +1,35 @@
+Q. Person은 이름과 나이를 기준으로 두 개의 객체가 동등하다고 판단하는 클래스입니다.
+	 'equal'와 'hashCode'를 함께 재정의하여 객체의 동등성을 제대로 처리해주세요.
+
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age && name.equals(person.name);
+    }
+
+    public static void main(String[] args) {
+        Person person1 = new Person("Alice", 30);
+        Person person2 = new Person("Alice", 30);
+
+        System.out.println(person1.equals(person2)); // 출력: true
+
+        // hashCode 메서드를 재정의하지 않았기 때문에 HashSet에 객체를 추가하면 두 객체가 서로 다른 해시 코드를 갖게 됨
+        HashSet<Person> personHashSet = new HashSet<>();
+        personHashSet.add(person1);
+        personHashSet.add(person2);
+
+        // HashSet에 두 개의 객체가 추가
+        System.out.println(personHashSet.size()); // 출력: 2
+    }
+}

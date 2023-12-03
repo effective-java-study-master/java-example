@@ -1,0 +1,69 @@
+다음 예시에서 static factory method 의 장점이 아닌 케이스는 ? (1~6 중 6지선다)
+
+1) 생성자 처럼 인스턴스를 생성해주는 메소드에 이름을 지어 사용할 수 있다.
+class CustomClass {
+    private static CustomClass cc;
+    static CustomClass of () {
+        if (cc == null) {
+            cc = new CustomClass();
+        }
+        return cc;
+    }
+}
+...
+...
+CustomClass cc = CustomClass.of();
+
+BigInteger bigInteger = BigInteger.valueOf(Integer.MAX_VALUE);
+
+
+
+2) 호출될 때마다 인스턴스를 새로 생성할 필요가 없다.
+// parameter 조건 있음!
+// i = -128 ~ 127 까지입니다.
+// (return IntegerCache.cache[i + (-IntegerCache.low)];)  << 여기가 point!!
+
+public static Integer valueOf(int i) {
+    if (i >= IntegerCache.low && i <= IntegerCache.high)
+        return IntegerCache.cache[i + (-IntegerCache.low)];
+    return new Integer(i);
+}
+
+
+
+3) 반환 타입의 하위 타입 객체를 반환 가능 하다.
+// Collection Framework 의 List 예제
+List<String> list = new ArrayList<>();
+
+
+
+4) 매개변수에 따라 다른 클래스의 인스턴스를 반환할 수 있다.
+public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
+    Enum<?>[] universe = getUniverse(elementType);
+    if (universe == null)
+        throw new ClassCastException(elementType + " not an enum");
+
+    if (universe.length <= 64)
+        return new RegularEnumSet<>(elementType, universe);
+    else
+        return new JumboEnumSet<>(elementType, universe);
+}
+
+
+
+5) 정적 팩토리 메소드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.
+// Service Provider Framework(서비스 제공자 프레임워크)로는 JDBC 를 예시로 함
+// 서비스 인터페이스(JDBC -  Connection) : 구현체의 동작 정의
+// 제공자 등록 API(JDBC - DriverManager.registerDriver) : provider가 구현체를 등록할 때 사용
+// 서비스 접근 API(JDBC - DriverManager.getConnection) : 클라이언트는 서비스 접근 API 사용시 원하는 구현체의 조건을 명시할 수 있음
+// 서비스 제공자 인터페이스(JDBC - Driver) : 서비스 인터페이스의 인스턴스를 생성하는 펙토리 객체를 설명해준다.
+// 클라이언트는 서비스 접근 API 사용시 원하는 구현체의 조건을 명시할 수 있는 점은  Service Provider Framework가 유연한 정적 팩토리라고 할 수 있는 실체이다.
+
+
+
+6) 무분별한 인스턴스화를 막기 위해 private 를 사용한다.
+public class Collections {
+    // Suppresses default constructor, ensuring non-instantiability.
+    private Collections() {
+    }
+}
